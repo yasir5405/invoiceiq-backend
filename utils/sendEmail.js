@@ -9,7 +9,7 @@ const sendVerificationEmail = async (email, token) => {
     },
   });
 
-  const link = `http://localhost:3000/api/auth/verify-email?token=${token}`;
+  const link = `https://www.invoiceiq.xyz/api/auth/verify-email?token=${token}`;
 
   await transporter.sendMail({
     from: `InvoiceIQ <${process.env.EMAIL_USER}>`,
@@ -31,7 +31,7 @@ const resetPasswordLink = async (email, token) => {
   });
 
   // const link = `http://localhost:3000/api/auth/reset-password?token=${token}`;
-  const link = `http://localhost:5173/reset-password?token=${token}`;
+  const link = `https://www.invoiceiq.xyz/reset-password?token=${token}`;
 
   await transporter.sendMail({
     from: `InvoiceIQ <${process.env.EMAIL_USER}>`,
