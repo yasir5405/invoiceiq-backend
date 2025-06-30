@@ -1,0 +1,25 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "InvoiceIQ is a MERN-stack web application that automates invoice extraction, normalization, and flow forecasting. Tailored for SMBs and freelancers, it streamlines accounts payable/receivable flows and delivers predictive financial insights.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "author": "Yasir Naseem",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "googleapis": "^150.0.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.16.0",
+    "nodemailer": "^7.0.3",
+    "nodemon": "^3.1.10",
+    "zod": "^3.25.67"
+  }
+}
