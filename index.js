@@ -18,7 +18,11 @@ app.use(cookieParser());
 // Middleware for cors for cross origin requests
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://invoiceiq-sigma.vercel.app"],
+    origin: [
+      "http://localhost:5173",
+      "https://invoiceiq-sigma.vercel.app",
+      "https://www.invoiceiq.xyz",
+    ],
     credentials: true,
   })
 );
