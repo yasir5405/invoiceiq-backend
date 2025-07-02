@@ -9,7 +9,7 @@ const sendVerificationEmail = async (email, token) => {
     },
   });
 
-  const link = `https://www.invoiceiq.xyz/api/auth/verify-email?token=${token}`;
+  const link = `https://invoiceiq.xyz/login?token=${token}`;
 
   await transporter.sendMail({
     from: `InvoiceIQ <${process.env.EMAIL_USER}>`,
