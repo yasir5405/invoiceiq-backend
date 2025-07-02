@@ -9,13 +9,13 @@ const sendVerificationEmail = async (email, token) => {
     },
   });
 
-  const link = `https://invoiceiq.xyz/login?token=${token}`;
+  const link = `https://www.invoiceiq.xyz/login?token=${token}`;
 
   await transporter.sendMail({
     from: `InvoiceIQ <${process.env.EMAIL_USER}>`,
     to: email,
     subject: "Verify your InvoiceIQ account.",
-    html: `<h2>Welcome to Blogwala!</h2>
+    html: `<h2>Welcome to InvoiceIQ!</h2>
            <p>Please click the link below to verify your email:</p>
            <a href="${link}">${link}</a>`,
   });
