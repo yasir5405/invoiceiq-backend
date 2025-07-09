@@ -7,6 +7,7 @@ import {
 import {
   validateLoginBody,
   validateRegisterBody,
+  validateUpdateUserBody,
 } from "../utils/validationSchema.js";
 import crypto from "crypto";
 import bcrypt from "bcrypt";
@@ -505,6 +506,53 @@ const googleLogin = async (req, res) => {
   }
 };
 
+const updateUserInfo = async (req, res) => {
+  const parsedBody = validateUpdateUserBody(req.body);
+
+  if (!parsedBody.success) {
+    console.log("Invalid data format.");
+    return res.status(400).json({
+      success: false,
+      message: "Invalid data format.",
+      errors: parsedBody.error.errors[0].message,
+    });
+  }
+
+  const { name, email } = parsedBody.data;
+
+  const user = req.user;
+
+  const updatedName = name ?? user.name;
+  const updatedEmail = email ?? user.email;
+
+  try {
+    const updatedUser = await UserModel.findByIdAndUpdate(
+      user._id,
+      {
+        name: updatedName,
+        email: updatedEmail,
+      },
+      { new: true }
+    );
+    // console.log(updatedUser);
+
+    const { password: _, ...safeUser } = updatedUser._doc;
+
+    res.status(200).json({
+      success: true,
+      message: "User info updated successfully.",
+      user: safeUser,
+    });
+  } catch (error) {
+    console.error("Internal server error.");
+    res.status(500).json({
+      success: false,
+      message: "Internal server error",
+      error: error.message,
+    });
+  }
+};
+
 export {
   registerUser,
   verifyEmail,
@@ -515,4 +563,5 @@ export {
   forgetPassword,
   resetPassword,
   googleLogin,
+  updateUserInfo,
 };

@@ -50,10 +50,32 @@ export const loginSchema = z.object({
     .max(100, { message: "Password should be less than 100 characters long." }),
 });
 
+export const updateUserSchema = z
+  .object({
+    name: z
+      .string({
+        description: "Enter your full name.",
+        invalid_type_error: "Name should bFe characters only.",
+      })
+      .optional(),
+    email: z
+      .string({
+        description: "Enter your email.",
+        invalid_type_error: "Your email should be a valid email.",
+      })
+      .email({ message: "Should be a valid email" })
+      .optional(),
+  })
+  .strict();
+
 export const validateRegisterBody = (body) => {
   return registerSchema.safeParse(body);
 };
 
 export const validateLoginBody = (body) => {
   return loginSchema.safeParse(body);
+};
+
+export const validateUpdateUserBody = (body) => {
+  return updateUserSchema.safeParse(body);
 };
