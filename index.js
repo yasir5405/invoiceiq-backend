@@ -30,7 +30,7 @@ app.use(
 // Database connection function
 connectDB();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 
 app.get("/", (req, res) => {
   res.json({
@@ -43,5 +43,5 @@ app.use("/api/auth", userRouter);
 app.use("/auth", authRouter);
 
 app.listen(PORT, () => {
-  console.log(`Server is running at http://0.0.0.0:${PORT}`);
+  console.log(`Server is running at http://localhost:${PORT}`);
 });
