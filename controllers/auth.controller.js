@@ -521,12 +521,14 @@ const updateUserInfo = async (req, res) => {
     });
   }
 
-  const { name, email } = parsedBody.data;
+  const { name, email, role } = parsedBody.data;
 
   const user = req.user;
+  // console.log(parsedBody.data);
 
   const updatedName = name ?? user.name;
   const updatedEmail = email ?? user.email;
+  const updatedRole = role ?? user.role;
 
   try {
     const updatedUser = await UserModel.findByIdAndUpdate(
@@ -534,6 +536,7 @@ const updateUserInfo = async (req, res) => {
       {
         name: updatedName,
         email: updatedEmail,
+        role: updatedRole,
       },
       { new: true }
     );

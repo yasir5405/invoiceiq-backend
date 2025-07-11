@@ -65,6 +65,7 @@ export const updateUserSchema = z
       })
       .email({ message: "Should be a valid email" })
       .optional(),
+    role: z.enum(["user", "admin"]).optional().default("user"),
   })
   .strict();
 
