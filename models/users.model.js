@@ -22,6 +22,21 @@ const userSchema = new Schema(
     profileImage: {
       type: String,
       required: false,
+      trim: true,
+    },
+    role: {
+      type: String,
+      enum: ["admin", "user"],
+      default: "user",
+    },
+    companyName: {
+      type: String,
+      required: false,
+    },
+    plan: {
+      type: String,
+      enum: ["free", "starter", "pro"],
+      default: "free",
     },
     isVerified: {
       type: Boolean,
