@@ -437,7 +437,10 @@ const googleLogin = async (req, res) => {
 
     const { email, name, picture, id: googleId } = userInfo;
 
-    let user = await UserModel.findOne({ email: email });
+    // let user = await UserModel.findOne({ email: email });
+    let user = await UserModel.findOne({
+      $or: [{ email: email }, { googleId: googleId }],
+    });
 
     if (!user) {
       user = await UserModel.create({
