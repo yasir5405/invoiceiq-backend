@@ -42,6 +42,6 @@ app.get("/", (req, res) => {
 app.use("/api/auth", userRouter);
 app.use("/auth", authRouter);
 
-app.listen(PORT, () => {
+app.listen(PORT || 3000, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
 });
